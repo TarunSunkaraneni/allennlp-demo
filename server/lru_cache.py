@@ -33,3 +33,6 @@ class LRUCache(Generic[K, V]):
             if len(self._cache) >= self._capacity:
                 self._cache.popitem(last=False)
         self._cache[key] = value
+    
+    def __contains__(self, key: K):
+        return key in self._cache

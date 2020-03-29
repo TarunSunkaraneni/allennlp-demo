@@ -18,6 +18,7 @@ import parseIcon from './icons/parse-14px.svg';
 import passageIcon from './icons/passage-14px.svg';
 import questionIcon from './icons/question-14px.svg';
 import addIcon from './icons/add-14px.svg';
+import MiscPrediction from './components/demos/MiscPrediction';
 
 // This is the order in which they will appear in the menu
 const modelGroups = [
@@ -31,7 +32,8 @@ const modelGroups = [
             {model: "constituency-parsing", name: "Constituency Parsing", component: ConstituencyParser},
             {model: "dependency-parsing", name: "Dependency Parsing", component: DependencyParser},
             {model: "open-information-extraction", name: "Open Information Extraction", component: OpenIe},
-            {model: "sentiment-analysis", name: "Sentiment Analysis", component: SentimentAnalysis}
+            {model: "sentiment-analysis", name: "Sentiment Analysis", component: SentimentAnalysis},
+            {model: "misc-analysis", name: "Psychotherapy Analysis", component: MiscPrediction}
         ]
     },
     {

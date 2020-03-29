@@ -10,10 +10,12 @@
     "hierplane": "^0.1.0",
     "lodash": "^4.17.11",
     "npm": "6.13.4",
+    "npm-watch": "^0.6.0",
     "react": "^16.9.0",
     "react-accessible-accordion": "2.4.5",
     "react-app-rewire-styled-components": "3.0.2",
     "react-app-rewired": "2.1.0",
+    "react-autosize-textarea": "^7.0.0",
     "react-dom": "^16.9.0",
     "react-proptypes": "1.0.0",
     "react-router-dom": "^5.0.1",
@@ -21,7 +23,8 @@
     "react-syntax-highlighter": "^11.0.2",
     "react-tooltip": "3.11.2",
     "react-vis": "^1.11.6",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "watch": "^1.0.2"
   },
   "scripts": {
     "start": "react-app-rewired start",

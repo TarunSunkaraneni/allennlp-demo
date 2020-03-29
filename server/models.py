@@ -10,6 +10,7 @@ from allennlp_semparse.models.wikitables.wikitables_erm_semantic_parser import W
 
 from server.demo_model import DemoModel
 from server.gpt2 import Gpt2DemoModel
+from server.psychotherapy import RobertaMiscModel
 
 # This maps from the name of the task
 # to the ``DemoModel`` indicating the location of the trained model
@@ -44,6 +45,8 @@ def load_demo_models(models_file: str,
             load = DemoModel
         elif model_type == "gpt2":
             load = Gpt2DemoModel
+        elif model_type == "misc":
+            load = RobertaMiscModel
         else:
             raise ValueError(f"unknown model type: {model_type}")
 

@@ -49,7 +49,8 @@ logger.propagate = False
 supported_interpret_models = {'named-entity-recognition',
                               'fine-grained-named-entity-recognition',
                               'glove-sentiment-analysis',
-                              'roberta-sentiment-analysis',
+                              'roberta-sentiment-analysis', # TODO add our tasks
+                              'categorize-therapist-misc',
                               'textual-entailment',
                               'reading-comprehension',
                               'elmo-reading-comprehension',
@@ -143,6 +144,10 @@ def make_app(build_dir: str,
                     # We haven't implemented hotflip for NER.
                     continue
                 elif name == 'textual-entailment':
+                    # The SNLI model only has ELMo embeddings, which don't work with hotflip on
+                    # their own.
+                    continue
+                elif name == 'categorize-therapist-misc':
                     # The SNLI model only has ELMo embeddings, which don't work with hotflip on
                     # their own.
                     continue
@@ -318,6 +323,8 @@ def make_app(build_dir: str,
             log_blob["outputs"]["label_probs"] = prediction["label_probs"]
         elif model_name == "sentiment-analysis":
             log_blob["outputs"]["probs"] = prediction["probs"]
+        elif model_name == "categorize-therapist-misc":
+            log_blob["outputs"]["label_probs"] = prediction["probabilities"]
         elif model_name == "named-entity-recognition":
             log_blob["outputs"]["tags"] = prediction["tags"]
         elif model_name == "semantic-role-labeling":

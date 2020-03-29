@@ -7,6 +7,8 @@ import {
     Radio,
 } from '@allenai/varnish/components'
 
+import TextareaAutosize from 'react-autosize-textarea';
+
 import BeamSearch from './BeamSearch'
 import { Tooltip } from './Shared'
 import '../css/Button.css'
@@ -18,6 +20,11 @@ const ELLIPSIS = '…';
 const EXAMPLE_NAME_SEPARATOR = '@@';
 const DEFAULT_OPTION_GROUP = "DEFAULT_OPTION_GROUP";
 const TOOLTIP_ID = "model-tooltip";
+
+const StyledTextarea = styled(TextareaAutosize)`
+  width: 100%; 
+  border-radius: 3px;
+`;
 
 /**
  * Truncates the provided text such that no more than limit characters are rendered and adds an
@@ -126,6 +133,17 @@ class DemoInput extends React.Component {
             this.setState(stateUpdate)
         }
 
+        // Repeat button click selection
+        this.handleRepeatButtonClick = fieldName => e => {
+            const stateUpdate = {}
+            if (this.state[fieldName]) {
+                stateUpdate[fieldName] = this.state[fieldName] + 1;
+            } else {
+                stateUpdate[fieldName] = 1;
+            }
+            this.setState(stateUpdate) 
+        }
+
         // Handler that runs the model if 'Enter' is pressed.
         this.runOnEnter = e => {
             if (e.key === 'Enter') {
@@ -190,7 +208,15 @@ class DemoInput extends React.Component {
 
                     input = field.type === "TEXT_AREA" ? <FormTextArea {...props}/> : <FormInput {...props}/>
                     break
-
+                case "PSYCH_TEXT_AREA":
+                    input = <div>
+                                <StyledTextarea
+                                    placeholder={field.placeholder}
+                                    maxRows={9}
+                                    onChange={this.handleInputChange(field.name)}
+                                />
+                            </div>
+                    break
                 case "SELECT":
                     input = (
                         // If we have no value for this select, use the first option.
@@ -220,6 +246,11 @@ class DemoInput extends React.Component {
                     break
 
                 case "RADIO":
+                    if (!this.state[field.name]) {
+                        let newstate = {}
+                        newstate[field.name] = field.options[0].name
+                        this.setState(newstate);
+                    }
                     input = (
                         // If we have no value for this select, use the first option.
                         <Radio.Group

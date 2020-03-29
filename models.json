@@ -96,5 +96,33 @@
         "predictor_name": "text_classifier",
         "max_request_length": 1000,
         "memory": "4Gi"
+    },
+    "forecast-therapist-misc": {
+        "archive_file": "/home/sunkaran/scr/sunkaraneni/jie/psychotherapy/results/forecast-therapist-speaker",
+        "predictor_name": "text_classifier",
+        "type": "misc",
+        "max_request_length": 1000,
+        "memory": "4Gi"
+    },
+    "categorize-therapist-misc": {
+        "archive_file": "/home/sunkaran/scr/sunkaraneni/jie/psychotherapy/results/categorize-therapist-speaker/checkpoint-3000",
+        "predictor_name": "text_classifier",
+        "type": "misc",
+        "max_request_length": 1000,
+        "memory": "4Gi"
+    },
+    "forecast-patient-misc": {
+        "archive_file": "/home/sunkaran/scr/sunkaraneni/jie/psychotherapy/results/forecast-patient-speaker",
+        "predictor_name": "text_classifier",
+        "type": "misc",
+        "max_request_length": 1000,
+        "memory": "4Gi"
+    },
+    "categorize-patient-misc": {
+        "archive_file": "/home/sunkaran/scr/sunkaraneni/jie/psychotherapy/results/categorize-patient-speaker",
+        "predictor_name": "text_classifier",
+        "type": "misc",
+        "max_request_length": 1000,
+        "memory": "4Gi"
     }
 }
